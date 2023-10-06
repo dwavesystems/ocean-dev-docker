@@ -1,15 +1,21 @@
-# Ocean Docker Images
+# Ocean-Dev Docker Images
 
 [Ocean](https://docs.ocean.dwavesys.com/en/stable) is
-[D-Wave's](<https://www.dwavesys.com>) suite of tools for solving hard problems
-with quantum computers.
+[D-Wave's](https://www.dwavesys.com) suite of tools for solving hard problems
+with quantum computers. Ocean docker images are available in a DockerHub
+repository, [`dwavesys/ocean`](https://hub.docker.com/r/dwavesys/ocean).
+
+Ocean-Dev docker images extend Ocean images with additional development tools,
+and optional non-open-source Ocean packages like
+[`dwave-inspector`](https://github.com/dwavesystems/dwave-inspector) and
+[`dwave-drivers`](https://github.com/dwavesystems/dwave-drivers).
 
 
 ## Build Matrix
 
 - Ocean: [`{{ ocean_version }}`](https://github.com/dwavesystems/dwave-ocean-sdk/releases/{{ ocean_version }})
-- Python: `3.8` (except on Windows), `3.9`, **`3.10`** (default), `3.11`
-- Platform: [`bullseye`](https://wiki.debian.org/DebianBullseye), `slim` (minimal bullseye), `windowsservercore`
+- Python: `3.9`, `3.10`, **`3.11`** (default)
+- Platform: [`bullseye`](https://wiki.debian.org/DebianBullseye), `windowsservercore`
 
 
 ## Architectures
@@ -55,6 +61,12 @@ Ocean is released under the Apache License 2.0.
 
 Ocean dockerfiles (in this repo) are released under the Apache License 2.0 as well.
 See [LICENSE](./LICENSE) file.
+
+Some optional, non-open-source, Ocean packages included in Ocean-Dev docker images
+are released under the D-Wave EULA. Specifically, these include the visualization component
+of [dwave-inspector](https://docs.ocean.dwavesys.com/en/stable/licenses/inspector.html)
+and [dwave-drivers](https://docs.ocean.dwavesys.com/en/stable/licenses/drivers.html),
+a utility for finding appropriate flux bias offsets.
 
 However, bear in mind that docker images in general contain other software which
 may be under other licenses. It is the image user's responsibility to ensure

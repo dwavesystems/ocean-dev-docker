@@ -4,6 +4,6 @@
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
 
-FROM dwavesys/ocean:{{ocean_version}}-python{{python_version}}-{{distribution_tag}}
+FROM dwavesys/ocean:6.5.0-python3.9-windowsservercore
 
 CMD ["bash"]

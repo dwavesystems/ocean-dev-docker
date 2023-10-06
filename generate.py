@@ -29,7 +29,7 @@ import chevron
 import requests
 
 
-REPO_URL = 'https://github.com/dwavesystems/ocean-docker'
+REPO_URL = 'https://github.com/dwavesystems/ocean-dev-docker'
 
 
 def get_latest_ocean_version():
