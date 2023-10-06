@@ -100,7 +100,7 @@ jobs:
           Build context path.
 
     machine:
-      image: ubuntu-2004:202101-01
+      image: ubuntu-2204:2023.07.2
 
     resource_class: arm.medium
 
@@ -242,19 +242,14 @@ workflows:
             parameters:
               # list manually for now; long-term, we want to auto-generate this list from the main runner
               path: &linux-dockerfiles [
-                "dockerfiles/6/python3.8/bullseye",
-                "dockerfiles/6/python3.8/slim-bullseye",
                 "dockerfiles/6/python3.9/bullseye",
-                "dockerfiles/6/python3.9/slim-bullseye",
                 "dockerfiles/6/python3.10/bullseye",
-                "dockerfiles/6/python3.10/slim-bullseye",
                 "dockerfiles/6/python3.11/bullseye",
-                "dockerfiles/6/python3.11/slim-bullseye",
               ]
           filters: &off-master
             branches:
               ignore: << pipeline.parameters.master-branch >>
-          context: &ctx-staging "ocean-docker-staging"
+          context: &ctx-staging "ocean-dev-docker-staging"
 
       - build-linux-arm64: &build-linux-arm64
           name: linux-arm64-<< matrix.path >>
@@ -322,7 +317,7 @@ workflows:
           filters: &on-master
             branches:
               only: << pipeline.parameters.master-branch >>
-          context: &ctx-prod "ocean-docker-prod"
+          context: &ctx-prod "ocean-dev-docker-prod"
 
       - build-linux-arm64:
           <<: *build-linux-arm64

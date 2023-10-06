@@ -4,9 +4,6 @@
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
 
-FROM python:{{python_version}}-{{distribution_tag}}
+FROM dwavesys/ocean:{{ocean_version}}-python{{python_version}}-{{distribution_tag}}
 
-RUN pip install --no-cache-dir \
-        dwave-ocean-sdk=={{ocean_version}}
-
-CMD ["python"]
+CMD ["bash"]
