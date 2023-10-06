@@ -34,6 +34,7 @@ Architecture can be shared, though; Linux simple tags point to multi-arch images
 
 Shared tags map to multi-platform/multi-architecture images.
 
+
 ### Simple Tags
 
 - [Ocean: `6.5.0`, Python: `3.11`, Platform: `bullseye`](https://github.com/dwavesystems/ocean-dev-docker/blob/master/dockerfiles/6/python3.11/bullseye/Dockerfile)
@@ -86,15 +87,12 @@ Shared tags map to multi-platform/multi-architecture images.
 - `6-python3.10`, `6.5-python3.10`, `6.5.0-python3.10`, `python3.10`
   - [`6.5.0-python3.10-bullseye`](https://github.com/dwavesystems/ocean-dev-docker/blob/master/dockerfiles/6/python3.10/bullseye/Dockerfile)
   - [`6.5.0-python3.10-windowsservercore`](https://github.com/dwavesystems/ocean-dev-docker/blob/master/dockerfiles/6/python3.10/windowsservercore/Dockerfile)
-
 - `6`, `6-python3.11`, `6.5`, `6.5-python3.11`, `6.5.0`, `6.5.0-python3.11`, `latest`, `python3.11`
   - [`6.5.0-python3.11-bullseye`](https://github.com/dwavesystems/ocean-dev-docker/blob/master/dockerfiles/6/python3.11/bullseye/Dockerfile)
   - [`6.5.0-python3.11-windowsservercore`](https://github.com/dwavesystems/ocean-dev-docker/blob/master/dockerfiles/6/python3.11/windowsservercore/Dockerfile)
-
 - `6-python3.9`, `6.5-python3.9`, `6.5.0-python3.9`, `python3.9`
   - [`6.5.0-python3.9-bullseye`](https://github.com/dwavesystems/ocean-dev-docker/blob/master/dockerfiles/6/python3.9/bullseye/Dockerfile)
   - [`6.5.0-python3.9-windowsservercore`](https://github.com/dwavesystems/ocean-dev-docker/blob/master/dockerfiles/6/python3.9/windowsservercore/Dockerfile)
-
 
 
 ## License
