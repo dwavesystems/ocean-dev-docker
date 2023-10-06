@@ -13,19 +13,16 @@ ENV \
     # supress pip version warnings (presumably pip will always be close to latest in our image)
     PIP_DISABLE_PIP_VERSION_CHECK=1
 
+# upgrade pip
+RUN python -m pip install --no-cache-dir --upgrade pip setuptools wheel
+
 # install Ocean independently of other packages because pip is unable to
 # merge requirements gracefully (e.g. `requests` and `requests[socks]`)
-RUN pip install --no-cache-dir --upgrade pip setuptools wheel \
-    && pip install --no-cache-dir \
+RUN pip install --no-cache-dir \
         dwave-ocean-sdk[all]=={{ocean_version}} \
         dwave-scikit-learn-plugin
     # TODO: create site for user data home, as returned by homebase (xdg spec)
     # TODO: delete temporary files, if any
-
-# XXX: to be included in the next Ocean release
-RUN pip install --no-cache-dir \
-        dwave-system==1.21.0 \
-        dwave-cloud-client==0.11.0.dev0
 
 # install Ocean contrib packages (under EULA)
 RUN dwave install --all --yes

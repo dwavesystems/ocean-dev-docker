@@ -41,6 +41,13 @@ RUN apt-get update \
         net-tools \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
 
+# add a regular user
+RUN useradd -l -u 1000 -G sudo -md /home/user -s /bin/bash -p user user \
+    # passwordless sudo for users in the 'sudo' group
+    && sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers
+ENV HOME=/home/user
+WORKDIR $HOME
+
 ENV \
     # expose canonical image version
     OCEAN_DEV_IMAGE_VERSION="{{ocean_version}}-python{{python_version}}-{{distribution_tag}}" \
@@ -50,14 +57,6 @@ ENV \
     \
     # supress pip version warnings (presumably pip will always be close to latest in our image)
     PIP_DISABLE_PIP_VERSION_CHECK=1
-
-
-# add a regular user
-RUN useradd -l -u 1000 -G sudo -md /home/user -s /bin/bash -p user user \
-    # passwordless sudo for users in the 'sudo' group
-    && sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers
-ENV HOME=/home/user
-WORKDIR $HOME
 
 # use sudo so that user does not get sudo usage info on (the first) login
 USER user

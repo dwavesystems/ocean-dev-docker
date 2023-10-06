@@ -34,6 +34,7 @@ Architecture can be shared, though; Linux simple tags point to multi-arch images
 
 Shared tags map to multi-platform/multi-architecture images.
 
+
 ### Simple Tags
 
 {{#simple_tags}}
@@ -51,7 +52,6 @@ Shared tags map to multi-platform/multi-architecture images.
   {{#canonical}}
   - [`{{tag}}`]({{dockerfile}})
   {{/canonical}}
-
 {{/shared_tags}}
 
 
