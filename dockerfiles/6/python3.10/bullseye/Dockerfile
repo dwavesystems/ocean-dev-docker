@@ -80,9 +80,11 @@ RUN pip install --no-cache-dir --upgrade pip setuptools wheel \
     && rm -rf /tmp/*
 
 # XXX: to be included in the next Ocean release
-RUN pip install --no-cache-dir \
+RUN pip uninstall -y dwave-inspector \
+    && pip install --no-cache-dir \
         dwave-system==1.21.0 \
         dwave-cloud-client==0.11.0.dev0 \
+        git+https://github.com/dwavesystems/dwave-inspector.git@refs/pull/161/head \
     && rm -rf /tmp/*
 
 # install Ocean contrib packages (under EULA)
