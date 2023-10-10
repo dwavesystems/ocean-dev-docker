@@ -35,6 +35,7 @@ RUN pip install --no-cache-dir \
         pandas scipy scikit-learn imbalanced-learn tabulate \
         mock coverage \
         sphinx sphinx-rtd-theme \
-        seaborn ipympl
+        seaborn ipympl \
+        jupyter
 
 CMD ["bash"]
