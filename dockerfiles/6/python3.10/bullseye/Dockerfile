@@ -50,7 +50,7 @@ WORKDIR $HOME
 
 ENV \
     # expose canonical image version
-    OCEAN_DEV_IMAGE_VERSION="6.5.0-python3.10-bullseye" \
+    OCEAN_DEV_IMAGE_VERSION="6.6.0-python3.10-bullseye" \
     \
     # we need PATH for user python packages during build as well
     PATH="$HOME/.local/bin:$PATH" \
@@ -72,19 +72,11 @@ RUN { echo && echo "alias ll='ls -l'" && echo "alias la='ls -la'"; } >> .bashrc
 # merge requirements gracefully (e.g. `requests` and `requests[socks]`)
 RUN pip install --no-cache-dir --upgrade pip setuptools wheel \
     && pip install --no-cache-dir \
-        dwave-ocean-sdk[all]==6.5.0 \
+        dwave-ocean-sdk[all]==6.6.0 \
         dwave-scikit-learn-plugin \
     # create site for user data home, as returned by homebase (xdg spec)
     && mkdir -p /home/user/.local/share \
     && chown user:user -R /home/user/.local \
-    && rm -rf /tmp/*
-
-# XXX: to be included in the next Ocean release
-RUN pip uninstall -y dwave-inspector \
-    && pip install --no-cache-dir \
-        dwave-system==1.21.0 \
-        dwave-cloud-client==0.11.0.dev0 \
-        git+https://github.com/dwavesystems/dwave-inspector.git@refs/pull/161/head \
     && rm -rf /tmp/*
 
 # install Ocean contrib packages (under EULA)
