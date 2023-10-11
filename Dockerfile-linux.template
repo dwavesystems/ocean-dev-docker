@@ -102,6 +102,7 @@ RUN pip install --no-cache-dir \
         mock coverage \
         sphinx sphinx-rtd-theme \
         seaborn ipympl \
+        jupyter \
     && rm -rf /tmp/*
 
 CMD ["bash"]
