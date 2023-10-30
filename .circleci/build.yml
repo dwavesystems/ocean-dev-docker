@@ -21,7 +21,7 @@ jobs:
       path:
         type: string
         description: >
-          Build context path.
+          Build dockerfile directory.
 
     docker:
       - image: docker:20-git
@@ -53,11 +53,12 @@ jobs:
           name: Build image
           command: |
             tagfile="<< parameters.path >>/tags.json"
+            dockerfile="<< parameters.path >>/Dockerfile"
 
             c_tag=$(jq -r .canonical_tag "$tagfile")
             tag="$DOCKER_REPO:$TAG_PREFIX$c_tag-$ARCH"
 
-            docker build "<< parameters.path >>" -t "$tag"
+            docker build -f "$dockerfile" -t "$tag" .
 
       - run: &verify-canonical-image
           name: Verify image matches specs
@@ -97,7 +98,7 @@ jobs:
       path:
         type: string
         description: >
-          Build context path.
+          Build dockerfile directory.
 
     machine:
       image: ubuntu-2204:2023.07.2
