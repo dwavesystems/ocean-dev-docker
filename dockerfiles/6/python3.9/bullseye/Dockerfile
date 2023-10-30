@@ -69,7 +69,7 @@ RUN { echo && echo "PS1='\[\e]0;ocean-dev\w\a\]\[\033[01;32m\]ocean-dev\[\033[00
 RUN { echo && echo "alias ll='ls -l'" && echo "alias la='ls -la'"; } >> .bashrc
 
 # add help tip on start
-COPY auth-tip.sh /home/user/
+COPY data/auth-tip.sh /home/user/
 RUN { echo && echo "~/auth-tip.sh"; } >> .bashrc
 
 # install Ocean independently of other packages because pip is unable to
