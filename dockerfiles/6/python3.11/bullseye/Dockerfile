@@ -50,7 +50,7 @@ WORKDIR $HOME
 
 ENV \
     # expose canonical image version
-    OCEAN_DEV_IMAGE_VERSION="6.8.0-python3.11-bullseye" \
+    OCEAN_DEV_IMAGE_VERSION="6.9.0-python3.11-bullseye" \
     \
     # we need PATH for user python packages during build as well
     PATH="$HOME/.local/bin:$PATH" \
@@ -76,7 +76,7 @@ RUN { echo && echo "~/auth-tip.sh"; } >> .bashrc
 # merge requirements gracefully (e.g. `requests` and `requests[socks]`)
 RUN pip install --no-cache-dir --upgrade pip setuptools wheel \
     && pip install --no-cache-dir \
-        dwave-ocean-sdk[all]==6.8.0 \
+        dwave-ocean-sdk[all]==6.9.0 \
         dwave-scikit-learn-plugin \
     # create site for user data home, as returned by homebase (xdg spec)
     && mkdir -p /home/user/.local/share \

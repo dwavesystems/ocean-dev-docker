@@ -8,7 +8,7 @@ FROM python:3.9-windowsservercore
 
 ENV \
     # expose canonical image version
-    OCEAN_DEV_IMAGE_VERSION="6.8.0-python3.9-windowsservercore" \
+    OCEAN_DEV_IMAGE_VERSION="6.9.0-python3.9-windowsservercore" \
     \
     # supress pip version warnings (presumably pip will always be close to latest in our image)
     PIP_DISABLE_PIP_VERSION_CHECK=1
@@ -19,7 +19,7 @@ RUN python -m pip install --no-cache-dir --upgrade pip setuptools wheel
 # install Ocean independently of other packages because pip is unable to
 # merge requirements gracefully (e.g. `requests` and `requests[socks]`)
 RUN pip install --no-cache-dir \
-        dwave-ocean-sdk[all]==6.8.0 \
+        dwave-ocean-sdk[all]==6.9.0 \
         dwave-scikit-learn-plugin
     # TODO: create site for user data home, as returned by homebase (xdg spec)
     # TODO: delete temporary files, if any
