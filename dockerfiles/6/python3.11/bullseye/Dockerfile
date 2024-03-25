@@ -58,6 +58,9 @@ ENV \
     # supress pip version warnings (presumably pip will always be close to latest in our image)
     PIP_DISABLE_PIP_VERSION_CHECK=1
 
+# specify default python interpreter in the embedded devcontainer metadata
+LABEL devcontainer.metadata="[{\"customizations\": {\"vscode\": {\"extensions\": [\"ms-python.python\"], \"settings\": {\"python.defaultInterpreterPath\": \"/usr/local/bin/python\"}}}}]"
+
 # use sudo so that user does not get sudo usage info on (the first) login
 USER user
 RUN sudo echo "Running 'sudo' for user: success"
