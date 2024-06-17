@@ -243,7 +243,6 @@ workflows:
             parameters:
               # list manually for now; long-term, we want to auto-generate this list from the main runner
               path: &linux-dockerfiles [
-                "dockerfiles/7/python3.9/bullseye",
                 "dockerfiles/7/python3.10/bullseye",
                 "dockerfiles/7/python3.11/bullseye",
                 "dockerfiles/7/python3.12/bullseye",
@@ -267,7 +266,6 @@ workflows:
             parameters:
               # list manually for now; long-term, we want to auto-generate this list from the main runner
               path: &windows-dockerfiles [
-                "dockerfiles/7/python3.9/windowsservercore",
                 "dockerfiles/7/python3.10/windowsservercore",
                 "dockerfiles/7/python3.11/windowsservercore",
                 "dockerfiles/7/python3.12/windowsservercore",

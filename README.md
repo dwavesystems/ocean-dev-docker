@@ -57,18 +57,6 @@ Shared tags map to multi-platform/multi-architecture images.
   - `python3.11-windowsservercore`
   - `windowsservercore`
 
-- [Ocean: `7.0.0`, Python: `3.9`, Platform: `bullseye`](https://github.com/dwavesystems/ocean-dev-docker/blob/master/dockerfiles/7/python3.9/bullseye/Dockerfile)
-  - `7-python3.9-bullseye`
-  - `7.0-python3.9-bullseye`
-  - `7.0.0-python3.9-bullseye`
-  - `python3.9-bullseye`
-
-- [Ocean: `7.0.0`, Python: `3.9`, Platform: `windowsservercore`](https://github.com/dwavesystems/ocean-dev-docker/blob/master/dockerfiles/7/python3.9/windowsservercore/Dockerfile)
-  - `7-python3.9-windowsservercore`
-  - `7.0-python3.9-windowsservercore`
-  - `7.0.0-python3.9-windowsservercore`
-  - `python3.9-windowsservercore`
-
 - [Ocean: `7.0.0`, Python: `3.10`, Platform: `bullseye`](https://github.com/dwavesystems/ocean-dev-docker/blob/master/dockerfiles/7/python3.10/bullseye/Dockerfile)
   - `7-python3.10-bullseye`
   - `7.0-python3.10-bullseye`
@@ -105,9 +93,6 @@ Shared tags map to multi-platform/multi-architecture images.
 - `7-python3.12`, `7.0-python3.12`, `7.0.0-python3.12`, `python3.12`
   - [`7.0.0-python3.12-bullseye`](https://github.com/dwavesystems/ocean-dev-docker/blob/master/dockerfiles/7/python3.12/bullseye/Dockerfile)
   - [`7.0.0-python3.12-windowsservercore`](https://github.com/dwavesystems/ocean-dev-docker/blob/master/dockerfiles/7/python3.12/windowsservercore/Dockerfile)
-- `7-python3.9`, `7.0-python3.9`, `7.0.0-python3.9`, `python3.9`
-  - [`7.0.0-python3.9-bullseye`](https://github.com/dwavesystems/ocean-dev-docker/blob/master/dockerfiles/7/python3.9/bullseye/Dockerfile)
-  - [`7.0.0-python3.9-windowsservercore`](https://github.com/dwavesystems/ocean-dev-docker/blob/master/dockerfiles/7/python3.9/windowsservercore/Dockerfile)
 
 
 ## License
