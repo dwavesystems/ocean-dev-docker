@@ -6,7 +6,7 @@ print_auth_tip() {
 
 		To authorize Ocean to access Leap (and retrieve your Solver API token) please run:
 
-		    dwave auth login --oob && dwave config create --auto-token
+		    dwave setup --oob
 
 		More details available in the documentation: https://docs.ocean.dwavesys.com/auth.
 	END
