@@ -1,7 +1,7 @@
 {
     "matrix": {
         "ocean": [null, "{ocean.major}", "{ocean.minor}", "{ocean.patch}"],
-        "python": [null, "3.10", "3.11", "3.12"],
+        "python": [null, "3.9", "3.10", "3.11", "3.12"],
         "platform": ["bullseye", "windowsservercore"]
     },
     "exclude": [],
@@ -26,7 +26,7 @@
     "shared": {
         "matrix": {
             "ocean": [null, "{ocean.major}", "{ocean.minor}", "{ocean.patch}"],
-            "python": [null, "3.10", "3.11", "3.12"],
+            "python": [null, "3.9", "3.10", "3.11", "3.12"],
             "platform": [null]
         },
         "contracted": [
