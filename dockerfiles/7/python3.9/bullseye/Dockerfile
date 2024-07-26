@@ -4,7 +4,7 @@
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
 
-FROM python:3.12-bullseye
+FROM python:3.9-bullseye
 
 # setup locale
 RUN apt-get update \
@@ -50,7 +50,7 @@ WORKDIR $HOME
 
 ENV \
     # expose canonical image version
-    OCEAN_DEV_IMAGE_VERSION="7.1.0-python3.12-bullseye" \
+    OCEAN_DEV_IMAGE_VERSION="7.1.0-python3.9-bullseye" \
     \
     # we need PATH for user python packages during build as well
     PATH="$HOME/.local/bin:$PATH" \
