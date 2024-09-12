@@ -101,7 +101,7 @@ jobs:
           Build dockerfile directory.
 
     machine:
-      image: ubuntu-2204:2023.07.2
+      image: default
 
     resource_class: arm.medium
 
