@@ -15,7 +15,7 @@ and optional non-open-source Ocean packages like
 
 - Ocean: [`{{ ocean_version }}`](https://github.com/dwavesystems/dwave-ocean-sdk/releases/{{ ocean_version }})
 - Python: `3.9`, `3.10`, **`3.11`** (default), `3.12`
-- Platform: [`bullseye`](https://wiki.debian.org/DebianBullseye), `windowsservercore`
+- Platform: [`bookworm`](https://wiki.debian.org/DebianBookworm), `windowsservercore`
 
 
 ## Architectures
