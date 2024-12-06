@@ -247,6 +247,7 @@ workflows:
                 "dockerfiles/8/python3.10/bookworm",
                 "dockerfiles/8/python3.11/bookworm",
                 "dockerfiles/8/python3.12/bookworm",
+                "dockerfiles/8/python3.13/bookworm",
               ]
           filters: &off-master
             branches:
@@ -271,6 +272,7 @@ workflows:
                 "dockerfiles/8/python3.10/windowsservercore",
                 "dockerfiles/8/python3.11/windowsservercore",
                 "dockerfiles/8/python3.12/windowsservercore",
+                "dockerfiles/8/python3.13/windowsservercore",
               ]
           filters: *off-master
           context: *ctx-staging
