@@ -19,7 +19,7 @@ RUN python -m pip install --no-cache-dir --upgrade pip setuptools wheel
 # install Ocean independently of other packages because pip is unable to
 # merge requirements gracefully (e.g. `requests` and `requests[socks]`)
 RUN pip install --no-cache-dir \
-        dwave-ocean-sdk[all]==8.1.0 \
+        dwave-ocean-sdk==8.1.0 \
         dwave-scikit-learn-plugin
     # TODO: create site for user data home, as returned by homebase (xdg spec)
     # TODO: delete temporary files, if any
