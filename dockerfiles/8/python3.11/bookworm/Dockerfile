@@ -50,7 +50,7 @@ WORKDIR $HOME
 
 ENV \
     # expose canonical image version
-    OCEAN_DEV_IMAGE_VERSION="8.2.0-python3.11-bookworm" \
+    OCEAN_DEV_IMAGE_VERSION="8.3.0-python3.11-bookworm" \
     \
     # we need PATH for user python packages during build as well
     PATH="$HOME/.local/bin:$PATH" \
@@ -79,7 +79,7 @@ RUN { echo && echo "~/auth-tip.sh"; } >> .bashrc
 # merge requirements gracefully (e.g. `requests` and `requests[socks]`)
 RUN pip install --no-cache-dir --upgrade pip setuptools wheel \
     && pip install --no-cache-dir \
-        dwave-ocean-sdk==8.2.0 \
+        dwave-ocean-sdk==8.3.0 \
         dwave-scikit-learn-plugin \
     # create site for user data home, as returned by homebase (xdg spec)
     && mkdir -p /home/user/.local/share \
