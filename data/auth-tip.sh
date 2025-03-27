@@ -8,7 +8,7 @@ print_auth_tip() {
 
 		    dwave setup --oob
 
-		More details available in the documentation: https://docs.ocean.dwavesys.com/auth.
+		More details available in the documentation: https://docs.dwavequantum.com/auth.
 	END
 }
 
@@ -18,7 +18,7 @@ print_config_tip() {
 
 		    dwave config create --auto-token
 
-		More details available in the documentation: https://docs.ocean.dwavesys.com/auth.
+		More details available in the documentation: https://docs.dwavequantum.com/auth.
 	END
 }
 
