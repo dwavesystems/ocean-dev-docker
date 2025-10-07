@@ -1,0 +1,3 @@
+[submodule "data/ocean-devcontainer"]
+	path = data/ocean-devcontainer
+	url = https://github.com/dwavesystems/ocean-devcontainer
