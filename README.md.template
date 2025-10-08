@@ -9,6 +9,9 @@ Ocean-Dev docker images extend Ocean images with additional development tools,
 and optional non-open-source Ocean packages like
 [`dwave-inspector`](https://github.com/dwavesystems/dwave-inspector).
 
+Ocean-Dev docker images also embed [Ocean dev container](https://github.com/dwavesystems/ocean-devcontainer)
+in metadata, currently version {{{ocean_devcontainer_version}}}.
+
 
 ## Build Matrix
 
