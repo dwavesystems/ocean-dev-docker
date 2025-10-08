@@ -21,6 +21,7 @@ import os
 import re
 import json
 import shutil
+import subprocess
 from itertools import product, groupby
 from collections import defaultdict, namedtuple
 
@@ -32,7 +33,9 @@ import requests
 
 REPO_URL = 'https://github.com/dwavesystems/ocean-dev-docker'
 
-DEVCONTAINER_JSON_PATH = 'data/ocean-devcontainer/.devcontainer/devcontainer.json'
+DEVCONTAINER_REPO_PATH = 'data/ocean-devcontainer'
+
+DEVCONTAINER_JSON_PATH = f'{DEVCONTAINER_REPO_PATH}/.devcontainer/devcontainer.json'
 
 
 def get_latest_ocean_version():
@@ -49,6 +52,7 @@ def get_repo_path_url(path, repo_url=REPO_URL):
     # TODO: perhaps use permalink/tag/commit instead of latest master
     return f"{repo_url}/blob/master/{path}"
 
+
 def get_ocean_devcontainer_json_for_embedding(path=DEVCONTAINER_JSON_PATH):
     # load ocean dev container json config and prepare for image embedding
     with open(path) as fp:
@@ -60,6 +64,28 @@ def get_ocean_devcontainer_json_for_embedding(path=DEVCONTAINER_JSON_PATH):
     del config['image']
 
     return json.dumps(config)
+
+def get_ocean_devcontainer_version(path=DEVCONTAINER_REPO_PATH):
+    try:
+        cmd = subprocess.run(['git', '-C', path, 'tag', '--points-at', 'HEAD'],
+                             capture_output=True, check=True)
+        tags = cmd.stdout.decode('utf8').strip()
+    except subprocess.CalledProcessError:
+        raise ValueError(f'Failed to fetch git tag for path {path!r}')
+
+    try:
+        cmd = subprocess.run(['git', '-C', path, 'rev-parse', '--short', 'HEAD'],
+                             capture_output=True, check=True)
+        head = cmd.stdout.decode('utf8').strip()
+    except subprocess.CalledProcessError:
+        raise ValueError(f'Failed to fetch git commit hash path {path!r}')
+
+    if tags:
+        # note: possible multiple tags returned
+        return f'{tags} ({head})'
+    else:
+        # untagged/unreleased version, return hash only
+        return f'{head}'
 
 
 class BuildConfig:
@@ -317,6 +343,7 @@ def readme(template, output):
         ocean_version=build.ocean_version,
         simple_tags=simple_tags,
         shared_tags=shared_tags,
+        ocean_devcontainer_version=get_ocean_devcontainer_version(),
         strip=f_strip))
 
     output.write(readme)
@@ -373,6 +400,7 @@ def dockerfiles(ocean_version_scale):
             ocean_version=c_sub['ocean'],
             distribution_tag=c_sub['platform'],
             ocean_devcontainer_json=get_ocean_devcontainer_json_for_embedding(),
+            ocean_devcontainer_version=get_ocean_devcontainer_version(),
             is_slim=('slim' in c_sub['platform'])))
 
         click.echo(f"- writing {dockerfile_path!r}")
