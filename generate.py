@@ -26,10 +26,13 @@ from collections import defaultdict, namedtuple
 
 import click
 import chevron
+import pyjson5
 import requests
 
 
 REPO_URL = 'https://github.com/dwavesystems/ocean-dev-docker'
+
+DEVCONTAINER_JSON_PATH = 'data/ocean-devcontainer/.devcontainer/devcontainer.json'
 
 
 def get_latest_ocean_version():
@@ -45,6 +48,18 @@ def subtags_subset_of(subtags: dict, item: dict):
 def get_repo_path_url(path, repo_url=REPO_URL):
     # TODO: perhaps use permalink/tag/commit instead of latest master
     return f"{repo_url}/blob/master/{path}"
+
+def get_ocean_devcontainer_json_for_embedding(path=DEVCONTAINER_JSON_PATH):
+    # load ocean dev container json config and prepare for image embedding
+    with open(path) as fp:
+        # note: dev container schema allows comments (but not trailing commas);
+        # use json5 parser to strip comments
+        config = pyjson5.load(fp)
+
+    # strip `image` because it's redundant in the image label
+    del config['image']
+
+    return json.dumps(config)
 
 
 class BuildConfig:
@@ -357,6 +372,7 @@ def dockerfiles(ocean_version_scale):
             python_version=c_sub['python'],
             ocean_version=c_sub['ocean'],
             distribution_tag=c_sub['platform'],
+            ocean_devcontainer_json=get_ocean_devcontainer_json_for_embedding(),
             is_slim=('slim' in c_sub['platform'])))
 
         click.echo(f"- writing {dockerfile_path!r}")
