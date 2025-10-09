@@ -69,7 +69,7 @@ def get_ocean_devcontainer_version(path=DEVCONTAINER_REPO_PATH):
     try:
         cmd = subprocess.run(['git', '-C', path, 'tag', '--points-at', 'HEAD'],
                              capture_output=True, check=True)
-        tags = cmd.stdout.decode('utf8').strip()
+        tags = ', '.join(cmd.stdout.decode('utf8').split())
     except subprocess.CalledProcessError:
         raise ValueError(f'Failed to fetch git tag for path {path!r}')
 
