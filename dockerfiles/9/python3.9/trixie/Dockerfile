@@ -58,8 +58,8 @@ ENV \
     # supress pip version warnings (presumably pip will always be close to latest in our image)
     PIP_DISABLE_PIP_VERSION_CHECK=1
 
-# specify default python interpreter in the embedded devcontainer metadata
-LABEL devcontainer.metadata="[{\"customizations\": {\"vscode\": {\"extensions\": [\"ms-python.python\"], \"settings\": {\"python.defaultInterpreterPath\": \"/usr/local/bin/python\"}}}}]"
+# include Ocean dev container, https://github.com/dwavesystems/ocean-devcontainer at 1.3.0 (8c501fb)
+LABEL devcontainer.metadata='[{"name": "Ocean Development Environment", "updateContentCommand": "[ ! -r requirements.txt ] || pip install -r requirements.txt", "forwardPorts": [18000, 18001, 18002, 18003, 18004, 36000, 36001, 36002, 36003, 36004], "portsAttributes": {"18000-18004": {"label": "D-Wave Problem Inspector", "requireLocalPort": true}, "36000-36004": {"label": "OAuth 2.0 authorization code redirect URI", "requireLocalPort": true}}, "customizations": {"vscode": {"settings": {"python.defaultInterpreterPath": "/usr/local/bin/python", "python.createEnvironment.trigger": "off", "workbench": {"editorAssociations": {"*.md": "vscode.markdown.preview.editor"}, "startupEditor": "readme"}}, "extensions": ["ms-python.python", "ms-toolsai.jupyter"]}}}]'
 
 # use sudo so that user does not get sudo usage info on (the first) login
 USER user
