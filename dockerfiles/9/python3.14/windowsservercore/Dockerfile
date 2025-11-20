@@ -4,11 +4,11 @@
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
 
-FROM python:3.13-windowsservercore
+FROM python:3.14-windowsservercore
 
 ENV \
     # expose canonical image version
-    OCEAN_DEV_IMAGE_VERSION="9.1.0-python3.13-windowsservercore" \
+    OCEAN_DEV_IMAGE_VERSION="9.1.0-python3.14-windowsservercore" \
     \
     # supress pip version warnings (presumably pip will always be close to latest in our image)
     PIP_DISABLE_PIP_VERSION_CHECK=1
