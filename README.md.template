@@ -16,7 +16,7 @@ in metadata, currently version {{{ocean_devcontainer_version}}}.
 ## Build Matrix
 
 - Ocean: [`{{ ocean_version }}`](https://github.com/dwavesystems/dwave-ocean-sdk/releases/{{ ocean_version }})
-- Python: `3.9`, `3.10`, `3.11`, **`3.12`** (default), `3.13`
+- Python: `3.10`, `3.11`, `3.12`, **`3.13`** (default), `3.14`
 - Platform: [`bookworm`](https://wiki.debian.org/DebianBookworm) (default), [`trixie`](https://wiki.debian.org/DebianTrixie), `windowsservercore`
 
 
