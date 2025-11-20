@@ -2,7 +2,7 @@
     "matrix": {
         "ocean": [null, "{ocean.major}", "{ocean.minor}", "{ocean.patch}"],
         "python": [null, "3.10", "3.11", "3.12", "3.13", "3.14"],
-        "platform": ["trixie", "bookworm", "windowsservercore"]
+        "platform": ["trixie", "windowsservercore"]
     },
     "exclude": [],
     "aliases": {
@@ -17,7 +17,6 @@
     },
     "template": {
         "Dockerfile-linux.template": [
-            {"platform": "bookworm"},
             {"platform": "trixie"}
         ],
         "Dockerfile-windows.template": [
@@ -31,7 +30,7 @@
             "platform": [null]
         },
         "contracted": [
-            {"platform": "bookworm"},
+            {"platform": "trixie"},
             {"platform": "windowsservercore"}
         ]
     }
