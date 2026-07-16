@@ -50,13 +50,16 @@ WORKDIR $HOME
 
 ENV \
     # expose canonical image version
-    OCEAN_DEV_IMAGE_VERSION="9.3.0-python3.11-trixie" \
+    OCEAN_DEV_IMAGE_VERSION="9.4.0-python3.11-trixie" \
     \
     # we need PATH for user python packages during build as well
     PATH="$HOME/.local/bin:$PATH" \
     \
     # supress pip version warnings (presumably pip will always be close to latest in our image)
-    PIP_DISABLE_PIP_VERSION_CHECK=1
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    \
+    # suppress nodejs deprecation warnings, until this bug in vscode is fixed: https://github.com/microsoft/vscode/issues/301941
+    NODE_OPTIONS="--no-deprecation"
 
 # include Ocean dev container, https://github.com/dwavesystems/ocean-devcontainer at 1.3.0 (8c501fb)
 LABEL devcontainer.metadata='[{"name": "Ocean Development Environment", "updateContentCommand": "[ ! -r requirements.txt ] || pip install -r requirements.txt", "forwardPorts": [18000, 18001, 18002, 18003, 18004, 36000, 36001, 36002, 36003, 36004], "portsAttributes": {"18000-18004": {"label": "D-Wave Problem Inspector", "requireLocalPort": true}, "36000-36004": {"label": "OAuth 2.0 authorization code redirect URI", "requireLocalPort": true}}, "customizations": {"vscode": {"settings": {"python.defaultInterpreterPath": "/usr/local/bin/python", "python.createEnvironment.trigger": "off", "workbench": {"editorAssociations": {"*.md": "vscode.markdown.preview.editor"}, "startupEditor": "readme"}}, "extensions": ["ms-python.python", "ms-toolsai.jupyter"]}}}]'
@@ -79,7 +82,7 @@ RUN { echo && echo "~/auth-tip.sh"; } >> .bashrc
 # merge requirements gracefully (e.g. `requests` and `requests[socks]`)
 RUN pip install --no-cache-dir --upgrade pip setuptools wheel \
     && pip install --no-cache-dir \
-        dwave-ocean-sdk==9.3.0 \
+        dwave-ocean-sdk==9.4.0 \
         dwave-scikit-learn-plugin \
     # create site for user data home, as returned by homebase (xdg spec)
     && mkdir -p /home/user/.local/share \
