@@ -56,7 +56,10 @@ ENV \
     PATH="$HOME/.local/bin:$PATH" \
     \
     # supress pip version warnings (presumably pip will always be close to latest in our image)
-    PIP_DISABLE_PIP_VERSION_CHECK=1
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    \
+    # suppress nodejs deprecation warnings, until this bug in vscode is fixed: https://github.com/microsoft/vscode/issues/301941
+    NODE_OPTIONS="--no-deprecation"
 
 # include Ocean dev container, https://github.com/dwavesystems/ocean-devcontainer at {{{ocean_devcontainer_version}}}
 LABEL devcontainer.metadata='[{{{ocean_devcontainer_json}}}]'
